@@ -3,6 +3,10 @@ import AddStudent from './components/Dashboard/AddStudent'
 import Dashboard from './components/Dashboard/Dashboard'
 import Home from './components/Dashboard/Home'
 import Login from './components/Login/Login'
+import SignUp from './components/Login/SignUp'
+// import app from './firebase.init'
+// import {getAuth} from 'firebase/auth'
+// const auth = getAuth(app)
 
 function App() {
   return (
@@ -13,6 +17,7 @@ function App() {
           <Route path='/addStudent' element={<AddStudent />}></Route>
         </Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/signUp' element={<SignUp />}></Route>
       </Routes>
     </>
   )
