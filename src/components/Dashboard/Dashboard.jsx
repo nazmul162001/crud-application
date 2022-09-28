@@ -13,9 +13,29 @@ const Dashboard = () => {
       path: '/',
     },
     {
-      title: 'Add Student',
+      title: 'Course',
+      src: 'ri-user-line',
+      path: '/Course',
+    },
+    {
+      title: 'Students',
       src: 'ri-user-line',
       path: '/addStudent',
+    },
+    {
+      title: 'Payment',
+      src: 'ri-user-line',
+      path: '/payment',
+    },
+    {
+      title: 'Report',
+      src: 'ri-user-line',
+      path: '/report',
+    },
+    {
+      title: 'Settings',
+      src: 'ri-user-line',
+      path: '/settings',
     },
   ]
 
@@ -28,12 +48,12 @@ const Dashboard = () => {
       </div>
 
       <div className=''>
-        <label htmlFor='' className=''></label>
-        <div className='flex'>
+        <div className=''>
           <div
+            style={{ backgroundColor: '#F2EAE1' }}
             className={` ${
               open ? 'w-52' : 'w-24 '
-            } bg-gray-300 h-screen p-5  pt-8 relative duration-300`}
+            } h-screen p-5  pt-8 relative duration-300`}
           >
             <i
               className={`bg-base-100 text-black flex justify-center items-center ri-arrow-left-s-line absolute cursor-pointer -right-3 top-9 w-8 h-8
@@ -49,13 +69,13 @@ const Dashboard = () => {
                 }`}
               />
             </div>
+            {/* menu start  */}
             <ul className='pt-6'>
               {Menus.map((Menu, index) => (
                 <li
-                  className={`flex rounded-md cursor-pointer hover:bg-light-white text-sm items-center gap-x-4
-${Menu.gap ? '' : ''} ${index === 0 && 'bg-light-white'} `}
+                  className={`flex justify-center items-center rounded-md cursor-pointer text-sm gap-x-4`}
                 >
-                  {/* for mobile devicea */}
+                  {/* for mobile device */}
                   <NavLink
                     className={({ isActive }) =>
                       isActive
@@ -80,6 +100,7 @@ ${Menu.gap ? '' : ''} ${index === 0 && 'bg-light-white'} `}
                         !open && 'hidden'
                       } origin-left duration-200`}
                     >
+                      {/* menu  */}
                       <NavLink className='block' to={`${Menu.path}`}>
                         {Menu.title}
                       </NavLink>

@@ -3,21 +3,17 @@
     display: inline-flex;
     color: #000000;
     text-decoration: none;
-    /* padding: 8px 15px; */
-    /* gap: 5px; */
     transition: all 0.5s;
     border-radius: 5px;
   }
   .linkk:hover{
-    background:rgba(255,255,255,0.17);
-    color: white;
+    background:rgba(255, 255, 255, 0.374);
+    color: black;
     transition: all 0.5s;
   }
   .active-link{
-    background: rgba(255,255,255,0.17);
-    color: white;
-    /* padding: 8px 15px; */
-    /* gap: 5px; */
+    background: #FEAF00;
+    color: black;
     border-radius: 5px;
     width: 100%;
     display: inline-flex;
