@@ -1,14 +1,25 @@
 import React, { useState } from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init'
+import Spinner from '../Shared/Spinner'
 
 const Login = () => {
   const [passwordShown, setPasswordShown] = useState(false)
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth)
 
+  // Redirect location after login successful
   const navigate = useNavigate()
+  const location = useLocation()
+  let from = location.state?.from?.pathname || '/'
+
+  if (user) {
+    navigate(from, { replace: true })
+  }
+  if (loading) {
+    return <Spinner />;
+  }
 
   // Password toggle handler
   const togglePassword = () => {
@@ -86,8 +97,15 @@ const Login = () => {
                 name='password'
                 required
               />
-              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
-                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              <span
+                onClick={togglePassword}
+                className='absolute right-5 top-2 text-2xl'
+              >
+                {passwordShown ? (
+                  <i class='ri-eye-line'></i>
+                ) : (
+                  <i class='ri-eye-off-line'></i>
+                )}
               </span>
             </div>
           </div>

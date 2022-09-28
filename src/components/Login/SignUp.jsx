@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  useCreateUserWithEmailAndPassword,
-  useSignInWithGoogle,
-  useUpdateProfile,
-} from 'react-firebase-hooks/auth'
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
 import Swal from 'sweetalert2'
+import Spinner from '../Shared/Spinner'
 
 const SignUp = () => {
   const [err, setErr] = useState('')
@@ -16,13 +13,16 @@ const SignUp = () => {
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
 
   const navigate = useNavigate()
+  if (loading) {
+    return <Spinner />;
+  }
 
-    // Password toggle handler
-    const togglePassword = () => {
-        // When the handler is invoked
-        // inverse the boolean state of passwordShown
-        setPasswordShown(!passwordShown)
-      }
+  // Password toggle handler
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown)
+  }
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -35,13 +35,13 @@ const SignUp = () => {
     } else if (Password.length < 5) {
       setErr('Password must be at least 5 characters')
     } else {
-        Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: 'Sign Up Successfully! Please Login',
-            showConfirmButton: false,
-            timer: 1500
-          })
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Sign Up Successfully! Please Login',
+        showConfirmButton: false,
+        timer: 1500,
+      })
       createUserWithEmailAndPassword(Email, Password, confirmPassword)
       navigate('/login')
     }
@@ -93,8 +93,15 @@ const SignUp = () => {
                 name='password'
                 required
               />
-              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
-                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              <span
+                onClick={togglePassword}
+                className='absolute right-5 top-2 text-2xl'
+              >
+                {passwordShown ? (
+                  <i class='ri-eye-line'></i>
+                ) : (
+                  <i class='ri-eye-off-line'></i>
+                )}
               </span>
             </div>
           </div>
@@ -110,8 +117,15 @@ const SignUp = () => {
                 name='confirmPassword'
                 required
               />
-              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
-                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              <span
+                onClick={togglePassword}
+                className='absolute right-5 top-2 text-2xl'
+              >
+                {passwordShown ? (
+                  <i class='ri-eye-line'></i>
+                ) : (
+                  <i class='ri-eye-off-line'></i>
+                )}
               </span>
             </div>
           </div>
