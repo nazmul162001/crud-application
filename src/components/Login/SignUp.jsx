@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   useCreateUserWithEmailAndPassword,
@@ -6,8 +6,11 @@ import {
   useUpdateProfile,
 } from 'react-firebase-hooks/auth'
 import auth from '../../firebase.init'
+import Swal from 'sweetalert2'
 
 const SignUp = () => {
+  const [err, setErr] = useState('')
+
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
 
@@ -18,8 +21,27 @@ const SignUp = () => {
     const Email = e.target.email.value
     const Password = e.target.password.value
     const confirmPassword = e.target.confirmPassword.value
-    
-    createUserWithEmailAndPassword(Email, Password, confirmPassword);
+
+    if (Password !== confirmPassword) {
+      setErr('Password do not match')
+    } else if (Password.length < 5) {
+      setErr('Password must be at least 5 characters')
+    } else {
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: 'Sign Up Successfully! Please Login',
+            showConfirmButton: false,
+            timer: 1500
+          })
+      createUserWithEmailAndPassword(Email, Password, confirmPassword)
+      navigate('/login')
+    }
+  }
+
+  //   handling error
+  if (error) {
+    setErr(error.message)
   }
 
   return (
@@ -75,6 +97,9 @@ const SignUp = () => {
               required
             />
           </div>
+          <p className='text-red-500'>
+            <small>{err}</small>
+          </p>
           <div className='form-control mt-6'>
             <button className='bg-yellow-500 py-2 rounded text-base-100'>
               SIGN UP
