@@ -10,11 +10,19 @@ import Swal from 'sweetalert2'
 
 const SignUp = () => {
   const [err, setErr] = useState('')
+  const [passwordShown, setPasswordShown] = useState(false)
 
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
 
   const navigate = useNavigate()
+
+    // Password toggle handler
+    const togglePassword = () => {
+        // When the handler is invoked
+        // inverse the boolean state of passwordShown
+        setPasswordShown(!passwordShown)
+      }
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -77,25 +85,35 @@ const SignUp = () => {
             <label className='label'>
               <span className='label-text'>Password</span>
             </label>
-            <input
-              type='password'
-              placeholder='password'
-              className='input input-bordered'
-              name='password'
-              required
-            />
+            <div className='password_toggler relative'>
+              <input
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='password'
+                className='input input-bordered w-full'
+                name='password'
+                required
+              />
+              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
+                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              </span>
+            </div>
           </div>
           <div className='form-control'>
             <label className='label'>
-              <span className='label-text'>Confirm Password</span>
+              <span className='label-text'>Password</span>
             </label>
-            <input
-              type='password'
-              placeholder='confirm password'
-              className='input input-bordered'
-              name='confirmPassword'
-              required
-            />
+            <div className='password_toggler relative'>
+              <input
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='password'
+                className='input input-bordered w-full'
+                name='confirmPassword'
+                required
+              />
+              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
+                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              </span>
+            </div>
           </div>
           <p className='text-red-500'>
             <small>{err}</small>
