@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
 import auth from '../../firebase.init'
 
 const Login = () => {
+  const [passwordShown, setPasswordShown] = useState(false)
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth)
 
   const navigate = useNavigate()
+
+  // Password toggle handler
+  const togglePassword = () => {
+    // When the handler is invoked
+    // inverse the boolean state of passwordShown
+    setPasswordShown(!passwordShown)
+  }
 
   // error handling
   let errorMessage
@@ -18,7 +26,7 @@ const Login = () => {
       </p>
     )
   }
-
+  // handle login
   const handleLogin = (e) => {
     e.preventDefault()
     const Email = e.target.email.value
@@ -70,13 +78,18 @@ const Login = () => {
             <label className='label'>
               <span className='label-text'>Password</span>
             </label>
-            <input
-              type='password'
-              placeholder='password'
-              className='input input-bordered'
-              name='password'
-              required
-            />
+            <div className='password_toggler relative'>
+              <input
+                type={passwordShown ? 'text' : 'password'}
+                placeholder='password'
+                className='input input-bordered w-full'
+                name='password'
+                required
+              />
+              <span onClick={togglePassword} className='absolute right-5 top-2 text-2xl'>
+                {passwordShown ? <i class='ri-eye-line'></i> : <i class="ri-eye-off-line"></i>}
+              </span>
+            </div>
           </div>
           <p>
             <small>{errorMessage}</small>
