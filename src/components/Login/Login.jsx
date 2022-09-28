@@ -1,14 +1,30 @@
 import React from 'react'
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 import { useNavigate } from 'react-router-dom'
+import auth from '../../firebase.init'
 
 const Login = () => {
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth)
+
   const navigate = useNavigate()
+
+  // error handling
+  let errorMessage
+  if (error) {
+    errorMessage = (
+      <p className='text-red-500 italic text-xl'>
+        <small> {error?.message} </small>
+      </p>
+    )
+  }
 
   const handleLogin = (e) => {
     e.preventDefault()
     const Email = e.target.email.value
     const Password = e.target.password.value
-    console.log(Email, Password)
+
+    signInWithEmailAndPassword(Email, Password)
   }
 
   return (
@@ -55,13 +71,16 @@ const Login = () => {
               <span className='label-text'>Password</span>
             </label>
             <input
-              type='text'
+              type='password'
               placeholder='password'
               className='input input-bordered'
               name='password'
               required
             />
           </div>
+          <p>
+            <small>{errorMessage}</small>
+          </p>
           <div className='form-control mt-6'>
             <button className='bg-yellow-500 py-2 rounded text-base-100'>
               SIGN IN
@@ -69,10 +88,7 @@ const Login = () => {
           </div>
           <p>
             New to here?{' '}
-            <span
-              onClick={() => navigate('/signUp')}
-              className='link'
-            >
+            <span onClick={() => navigate('/signUp')} className='link'>
               Sign Up
             </span>{' '}
           </p>
