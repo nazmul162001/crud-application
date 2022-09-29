@@ -64,7 +64,7 @@ const Login = () => {
         <div className='credentials flex justify-between border border-gray-300 px-3 py-2'>
           <p>
             {' '}
-            <span className='font-bold'>Email:</span> abc@gmail.com
+            <span className='font-bold'>Email: </span>test@gmail.com
           </p>
           <p>
             {' '}

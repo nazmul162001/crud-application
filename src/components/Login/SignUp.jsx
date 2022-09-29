@@ -17,12 +17,6 @@ const SignUp = () => {
     return <Spinner />;
   }
 
-  // Password toggle handler
-  const togglePassword = () => {
-    // When the handler is invoked
-    // inverse the boolean state of passwordShown
-    setPasswordShown(!passwordShown)
-  }
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -94,7 +88,7 @@ const SignUp = () => {
                 required
               />
               <span
-                onClick={togglePassword}
+                onClick={()=> setPasswordShown(!passwordShown)}
                 className='absolute right-5 top-2 text-2xl'
               >
                 {passwordShown ? (
@@ -107,18 +101,18 @@ const SignUp = () => {
           </div>
           <div className='form-control'>
             <label className='label'>
-              <span className='label-text'>Password</span>
+              <span className='label-text'>Confirm Password</span>
             </label>
             <div className='password_toggler relative'>
               <input
                 type={passwordShown ? 'text' : 'password'}
-                placeholder='password'
+                placeholder='Confirm password'
                 className='input input-bordered w-full'
                 name='confirmPassword'
                 required
               />
               <span
-                onClick={togglePassword}
+                onClick={()=> setPasswordShown(!passwordShown)}
                 className='absolute right-5 top-2 text-2xl'
               >
                 {passwordShown ? (

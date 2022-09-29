@@ -121,7 +121,7 @@ const handleAddUpdate = (e) => {
               <div class='md:w-1/3'></div>
               <div class='md:w-2/3'>
                 <div className='modal-action'>
-                <button className='px-12 py-2 bg-yellow-500 rounded-lg'>
+                <button className='px-12 py-2 bg-yellow-500 rounded-lg text-base-100'>
                     Submit
                 </button>
                   {/* <input type="submit" value="submit" /> */}
