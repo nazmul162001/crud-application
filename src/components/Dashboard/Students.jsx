@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import arrow from '../../assets/images/arrow.png'
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import AddUpdateModal from './AddUpdateModal'
 
 const Students = () => {
+    const [students, setStudents] = useState(false)
   return (
     <section className='manage_student mt-5'>
       <div className='add_student flex justify-between'>
@@ -12,9 +13,7 @@ const Students = () => {
           <span className='mr-5'>
             <img src={arrow} alt='/arrow' />
           </span>
-          <button className='px-5 py-2 bg-yellow-500 rounded-lg text-base-100'>
-            ADD NEW STUDENT
-          </button>
+          <label onClick={()=> setStudents(true)} htmlFor="addUpdateModal" className="px-5 py-2 cursor-pointer bg-yellow-500 rounded-lg text-base-100">ADD NEW STUDENT</label>
         </div>
       </div>
       {/* students table  */}
@@ -42,54 +41,55 @@ const Students = () => {
           </Tr>
         </Tbody>
       </Table> */}
-      <div className="overflow-x-auto">
-  <table className="table table-compact w-full">
-    <thead>
-      <tr>
-        <th>Name</th> 
-        <th>Email</th> 
-        <th>Phone</th> 
-        <th>Enroll Number</th> 
-        <th>Date of admission</th> 
-        <th>Action</th>
-      </tr>
-    </thead> 
-    <tbody>
-      <tr className='border-b-2'> 
-        <td>Nazmul Hassan</td> 
-        <td>nazmul@gmail.com</td> 
-        <td>+8801790-868092</td> 
-        <td>6465646455</td> 
-        <td>12/16/2020</td> 
-        <td className='flex'>
-        <i class="ri-pencil-line mr-4 text-xl text-yellow-500"></i>
-        <i class="ri-delete-bin-7-line text-xl text-yellow-500"></i>
-        </td>
-      </tr>
-      <tr className='border-b-2'> 
-        <td>Nazmul Hassan</td> 
-        <td>nazmul@gmail.com</td> 
-        <td>+8801790-868092</td> 
-        <td>6465646455</td> 
-        <td>12/16/2020</td> 
-        <td className='flex'>
-        <i class="ri-pencil-line mr-4 text-xl text-yellow-500"></i>
-        <i class="ri-delete-bin-7-line text-xl text-yellow-500"></i>
-        </td>
-      </tr>
-    </tbody> 
-    <tfoot>
-      <tr>
-        <th>Name</th> 
-        <th>Email</th> 
-        <th>Phone</th> 
-        <th>Enroll Number</th> 
-        <th>Date of admission</th> 
-        <th>Action</th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
+      <div className='overflow-x-auto mt-5'>
+        <table className='table table-compact w-full'>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Enroll Number</th>
+              <th>Date of admission</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className='border-b-2'>
+              <td>Nazmul Hassan</td>
+              <td>nazmul@gmail.com</td>
+              <td>+8801790-868092</td>
+              <td>6465646455</td>
+              <td>12/16/2020</td>
+              <td className='flex'>
+                <i class='ri-pencil-line mr-4 text-xl text-yellow-500'></i>
+                <i class='ri-delete-bin-7-line text-xl text-yellow-500'></i>
+              </td>
+            </tr>
+            <tr className='border-b-2'>
+              <td>Nazmul Hassan</td>
+              <td>nazmul@gmail.com</td>
+              <td>+8801790-868092</td>
+              <td>6465646455</td>
+              <td>12/16/2020</td>
+              <td className='flex'>
+                <i class='ri-pencil-line mr-4 text-xl text-yellow-500'></i>
+                <i class='ri-delete-bin-7-line text-xl text-yellow-500'></i>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Enroll Number</th>
+              <th>Date of admission</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      {students && <AddUpdateModal />}
     </section>
   )
 }

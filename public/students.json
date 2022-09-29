@@ -1,0 +1,18 @@
+[
+    {
+        "_id": 1,
+        "name": "Nazmul Hassan",
+        "email": "nazmul@gmail.com",
+        "phone": "+8801790868092",
+        "enrollnumber": "145465414",
+        "date": "1 Auguest 2022"
+    },
+    {
+        "_id": 2,
+        "name": "Jhankar Mahbub",
+        "email": "jhankar@gmail.com",
+        "phone": "+8801790868092",
+        "enrollnumber": "855465414",
+        "date": "1 september 2022"
+    }
+  ]
