@@ -40,15 +40,19 @@ const Dashboard = () => {
   ]
 
   return (
-    <div className='drawer drawer-mobile'>
-      <input id='my-drawer-2' type='checkbox' className='drawer-toggle' />
-      <div className='drawer-content flex flex-col items-center justify-center'>
+    <div className='relative'>
+      <input id='' type='checkbox' className='drawer-toggle' />
+      <div
+        className={`flex flex-col items-center justify-center transition-all ease-in-out duration-300 ${
+          open ? 'ml-56' : 'ml-28'
+        }`}
+      >
         {/* outlet  */}
         <Outlet />
       </div>
 
       <div className=''>
-        <div className=''>
+        <div className='fixed top-0 h-screen left-0 z-50'>
           <div
             style={{ backgroundColor: '#F2EAE1' }}
             className={` ${
@@ -80,9 +84,15 @@ const Dashboard = () => {
                     className={({ isActive }) =>
                       isActive
                         ? `active-link flex items-center ${
-                            open && 'py-3 my-1 px-5'
+                            open
+                              ? 'py-3 my-1 px-5'
+                              : 'flex justify-center items-center'
                           }`
-                        : `linkk flex items-center ${open && 'py-3 my-1 px-5'}`
+                        : `linkk flex items-center ${
+                            open
+                              ? 'py-3 my-1 px-5'
+                              : 'flex justify-center items-center'
+                          }`
                     }
                     to={`${Menu.path}`}
                   >
