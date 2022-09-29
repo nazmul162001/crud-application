@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { signOut } from 'firebase/auth';
+import { signOut } from 'firebase/auth'
 import 'remixicon/fonts/remixicon.css'
 import { NavLink, Outlet } from 'react-router-dom'
 import './Dashboard.css'
@@ -9,9 +9,9 @@ import auth from '../../firebase.init'
 import Swal from 'sweetalert2'
 
 const Dashboard = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading, error] = useAuthState(auth)
 
-  // handle logout user 
+  // handle logout user
   const handleLogOut = () => {
     Swal.fire({
       title: 'Are you sure want to Logout?',
@@ -19,23 +19,21 @@ const Dashboard = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Successfully Logout'
-        )
+        Swal.fire('Successfully Logout')
         signOut(auth)
       }
     })
   }
-  
+
   const [open, setOpen] = useState(true)
   const Menus = [
     {
       title: 'Home',
       src: 'ri-dashboard-line',
-      path: '/home',
+      path: '/',
     },
     {
       title: 'Course',
@@ -68,11 +66,34 @@ const Dashboard = () => {
     <div className='relative'>
       <input id='' type='checkbox' className='drawer-toggle' />
       <div
-        className={`flex flex-col items-center justify-center transition-all ease-in-out duration-300 ${
+        className={`transition-all ease-in-out duration-300 ${
           open ? 'ml-60' : 'ml-28'
         }`}
       >
         {/* outlet  */}
+        <div className='flex justify-between items-center my-2 mx-5'>
+          <div className='left_arrow'>
+          <i class="ri-arrow-left-s-fill text-2xl text-gray-400 rotate-180 rounded-full border cursor-pointer"></i>
+          </div>
+          <div className='search flex justify-center items-center'>
+            <div class='font-sans text-black bg-white flex items-center justify-center'>
+              <div class='border rounded-lg overflow-hidden flex'>
+                <input type='text' class='px-4 py-2' placeholder='Search...' />
+                <button class='flex items-center justify-center px-4'>
+                  <svg
+                    class='h-4 w-4 text-grey-dark'
+                    fill='currentColor'
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                  >
+                    <path d='M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z' />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <i class="ri-notification-3-line ml-2 text-2xl cursor-pointer text-gray-400"></i>
+          </div>
+        </div>
         <Outlet />
       </div>
 
@@ -156,11 +177,13 @@ const Dashboard = () => {
               </li>
             ))}
           </ul>
-          <button onClick={handleLogOut} className='absolute bottom-2 py-2 px-5 w-full'>Logout</button>
+          <button
+            onClick={handleLogOut}
+            className='absolute bottom-2 py-2 px-5 w-full'
+          >
+            Logout
+          </button>
         </div>
-        {/* <div className='h-screen flex-1 p-7'>
-            <h1 className='text-2xl font-semibold '>Home Page </h1>
-          </div> */}
       </div>
     </div>
   )
