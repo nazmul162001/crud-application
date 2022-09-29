@@ -1,23 +1,134 @@
 import React from 'react'
 
 const AddUpdateModal = () => {
+
+const handleAddUpdate = (e) => {
+    e.preventDefault()
+    const name = e.target.name.value
+    const email = e.target.email.value
+    const phone = e.target.phone.value
+    const enroll = e.target.enroll.value
+    const admission = e.target.admission.value
+
+    console.log(name, email, phone, enroll, admission);
+}
+    
   return (
     <div>
       <input type='checkbox' id='addUpdateModal' className='modal-toggle' />
       <div className='modal modal-bottom sm:modal-middle'>
         <div className='modal-box'>
-          <h3 className='font-bold text-lg'>
-            Congratulations random Internet user!
-          </h3>
-          <p className='py-4'>
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-          <div className='modal-action'>
-            <label htmlFor='addUpdateModal' className='btn'>
-              Submit
-            </label>
-          </div>
+        <label htmlFor="addUpdateModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <h1 className='text-xl font-bold'>Add/Edit Students</h1>
+          <form onSubmit={handleAddUpdate} class='w-full'>
+            {/* name field  */}
+            <div class='md:flex md:items-center mb-6'>
+              <div class='md:w-1/3'>
+                <label
+                  class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                  for='inline-full-name'
+                >
+                 Name: 
+                </label>
+              </div>
+              <div class='md:w-2/3'>
+                <input
+                  class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
+                  id='userName'
+                  type='text'
+                  name='name'
+                />
+              </div>
+            </div>
+            {/* email field  */}
+            <div class='md:flex md:items-center mb-6'>
+              <div class='md:w-1/3'>
+                <label
+                  class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                  for='inline-full-name'
+                >
+                 Email: 
+                </label>
+              </div>
+              <div class='md:w-2/3'>
+                <input
+                  class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
+                  id='userEmail'
+                  type='email'
+                  name='email'
+                />
+              </div>
+            </div>
+            {/* phone number field  */}
+            <div class='md:flex md:items-center mb-6'>
+              <div class='md:w-1/3'>
+                <label
+                  class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                  for='inline-full-name'
+                >
+                 Phone: 
+                </label>
+              </div>
+              <div class='md:w-2/3'>
+                <input
+                  class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
+                  id='number'
+                  type='number'
+                  name='phone'
+                />
+              </div>
+            </div>
+            {/* Enroll number field  */}
+            <div class='md:flex md:items-center mb-6'>
+              <div class='md:w-1/3'>
+                <label
+                  class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                  for='inline-full-name'
+                >
+                 Enroll Number: 
+                </label>
+              </div>
+              <div class='md:w-2/3'>
+                <input
+                  class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
+                  id='number'
+                  type='number'
+                  name='enroll'
+                />
+              </div>
+            </div>
+            {/* date of admission field  */}
+            <div class='md:flex md:items-center mb-6'>
+              <div class='md:w-1/3'>
+                <label
+                  class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
+                  for='inline-full-name'
+                >
+                 Date of Admission: 
+                </label>
+              </div>
+              <div class='md:w-2/3'>
+                <input
+                  class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
+                  id='admission'
+                  type='number'
+                  name='admission'
+                />
+              </div>
+            </div>
+            {/* submit button  */}
+            <div class=''>
+              <div class='md:w-1/3'></div>
+              <div class='md:w-2/3'>
+                <div className='modal-action'>
+                <button className='px-12 py-2 bg-yellow-500 rounded-lg'>
+                    Submit
+                </button>
+                  {/* <input type="submit" value="submit" /> */}
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+label.block{
+    text-align: left;
+}
+label{
+    font-size: .9rem;
+}
