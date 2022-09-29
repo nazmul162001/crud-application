@@ -43,7 +43,7 @@ const Dashboard = () => {
     {
       title: 'Students',
       src: 'ri-user-line',
-      path: '/addStudent',
+      path: '/students',
     },
     {
       title: 'Payment',
@@ -66,7 +66,7 @@ const Dashboard = () => {
     <div className='relative'>
       <input id='' type='checkbox' className='drawer-toggle' />
       <div
-        className={`transition-all ease-in-out duration-300 ${
+        className={`transition-all ease-in-out duration-300 mr-5 ${
           open ? 'ml-60' : 'ml-28'
         }`}
       >
