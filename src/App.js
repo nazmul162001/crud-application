@@ -22,7 +22,7 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route path='/' element={<Home />}></Route>
+          <Route path='/home' element={<Home />}></Route>
           <Route path='/addStudent' element={<AddStudent />}></Route>
         </Route>
         <Route path='/login' element={<Login />}></Route>
