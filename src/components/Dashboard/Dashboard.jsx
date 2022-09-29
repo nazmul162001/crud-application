@@ -14,7 +14,7 @@ const Dashboard = () => {
   // handle logout user 
   const handleLogOut = () => {
     Swal.fire({
-      title: 'Are you sure to Logout?',
+      title: 'Are you sure want to Logout?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
