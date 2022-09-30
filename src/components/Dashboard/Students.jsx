@@ -6,11 +6,15 @@ import axios from 'axios';
 import Spinner from '../Shared/Spinner';
 import Student from './Student';
 import Swal from 'sweetalert2';
+import UpdateModal from './UpdateModal';
 
 const Students = () => {
     const [students, setStudents] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [studentsData, setStudentsData] = useState([])
+    const [update, setUpdate] = useState(false)
+    const [updatedValue, setUpdatedValue] = useState({})
+
 
       // getting student data from server
   useEffect(() => {
@@ -42,6 +46,13 @@ const Students = () => {
     })
   }
 
+  // handleUpdate
+  const handleUpdate = async(id) => {
+    setUpdate(true)
+    await axios.get(
+      `http://localhost:5000/api/v1/users/${id}`
+    ).then(res => setUpdatedValue(res.data[0]))
+  }
     
   return (
     <section className='manage_student mt-5'>
@@ -81,7 +92,7 @@ const Students = () => {
       </Table> */}
       <div className='overflow-x-auto mt-5'>
         <table className='table table-compact w-full'>
-          <thead>
+          <thead className='opacity-70'>
             <tr>
               <th>Name</th>
               <th>Email</th>
@@ -93,22 +104,13 @@ const Students = () => {
           </thead>
           <tbody>
             {
-              studentsData.map((students) => <Student students = {students} key={students._id} handleDeleteStudentData={handleDeleteStudentData} />)
+              studentsData.map((students) => <Student students = {students} key={students._id} handleDeleteStudentData={handleDeleteStudentData} handleUpdate={handleUpdate} update={update} setUpdate={setUpdate} />)
             }
           </tbody>
-          <tfoot>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Phone</th>
-              <th>Enroll Number</th>
-              <th>Date of admission</th>
-              <th>Action</th>
-            </tr>
-          </tfoot>
         </table>
       </div>
       {students && <AddUpdateModal setStudents={setStudents} />}
+      {update && <UpdateModal students={students} updatedValue={updatedValue} setUpdate={setUpdate} studentsData={studentsData} />}
     </section>
   )
 }

@@ -1,23 +1,35 @@
-import React from 'react';
+import axios from 'axios'
+import React from 'react'
 
-const UpdateModal = ({setUpdate}) => {
-    const handleUpdate = () => {
-        
-    }
+const UpdateModal = ({ setUpdate, students, updatedValue, studentsData, handleUpdateStudent }) => {
+
+    const handleAddUpdate = async (e) => {
+        e.preventDefault()
+        const name = e.target.name.value
+        const email = e.target.email.value
+        const phone = e.target.phone.value
+        const enroll = e.target.enroll.value
+        const admission = e.target.admission.value
     
-    return (
-        <div>
-        <input type='checkbox' id='UpdateModal' className='modal-toggle' />
-        <div className='modal modal-bottom sm:modal-middle'>
-          <div className='modal-box'>
-            <label
-              htmlFor='UpdateModal'
-              className='btn btn-sm btn-circle absolute right-2 top-2'
-            >
-              ✕
-            </label>
-            <h1 className='text-xl font-bold mb-5'>Add/Edit Students</h1>
-            <form onSubmit={handleUpdate} class='w-full'>
+        console.log(name, email, phone, enroll, admission)
+        // close modal after successfully added student
+        setUpdate(false)
+      }
+    
+
+  return (
+    <div>
+      <input type='checkbox' id='UpdateModal' className='modal-toggle' />
+      <div className='modal modal-bottom sm:modal-middle'>
+        <div className='modal-box'>
+          <label
+            htmlFor='UpdateModal'
+            className='btn btn-sm btn-circle absolute right-2 top-2'
+          >
+            ✕
+          </label>
+          <h1 className='text-xl font-bold mb-5'>Update Student</h1>
+            <form onSubmit={handleAddUpdate} class='w-full'>
               {/* name field  */}
               <div class='md:flex md:items-center mb-6'>
                 <div class='md:w-1/3'>
@@ -34,6 +46,7 @@ const UpdateModal = ({setUpdate}) => {
                     id='userName'
                     type='text'
                     name='name'
+                    defaultValue={updatedValue.name}
                     required
                   />
                 </div>
@@ -54,6 +67,7 @@ const UpdateModal = ({setUpdate}) => {
                     id='userEmail'
                     type='email'
                     name='email'
+                    defaultValue={updatedValue.email}
                     required
                   />
                 </div>
@@ -74,6 +88,7 @@ const UpdateModal = ({setUpdate}) => {
                     id='number'
                     type='number'
                     name='phone'
+                    defaultValue={updatedValue.phone}
                     required
                   />
                 </div>
@@ -94,6 +109,7 @@ const UpdateModal = ({setUpdate}) => {
                     id='number'
                     type='number'
                     name='enroll'
+                    defaultValue={updatedValue.enroll}
                     required
                   />
                 </div>
@@ -114,6 +130,7 @@ const UpdateModal = ({setUpdate}) => {
                     id='admission'
                     type='date'
                     name='admission'
+                    defaultValue={updatedValue.admission}
                     required
                   />
                 </div>
@@ -131,10 +148,10 @@ const UpdateModal = ({setUpdate}) => {
                 </div>
               </div>
             </form>
-          </div>
         </div>
       </div>
-    );
-};
+    </div>
+  )
+}
 
-export default UpdateModal;
+export default UpdateModal

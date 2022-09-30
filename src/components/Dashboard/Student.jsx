@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import UpdateModal from './UpdateModal'
 
-const Student = ({ students, handleDeleteStudentData }) => {
-  const [update, setUpdate] = useState(false)
+const Student = ({ students, handleDeleteStudentData, handleUpdate, update, setUpdate }) => {
   const { name, email, phone, enroll, admission, _id } = students
+
 
   return (
     <>
@@ -15,7 +15,7 @@ const Student = ({ students, handleDeleteStudentData }) => {
         <td>{admission}</td>
         <td className='flex'>
           <label
-            onClick={() => setUpdate(true)}
+            onClick={() => handleUpdate(_id)}
             htmlFor='UpdateModal'
             className='mr-4 text-xl text-yellow-500 cursor-pointer hover:bg-yellow-600 rounded-full hover:text-base-100 px-2 py-1 flex justify-center items-center'
           >
@@ -28,7 +28,6 @@ const Student = ({ students, handleDeleteStudentData }) => {
           ></i>
         </td>
       </tr>
-      {update && <UpdateModal setUpdate={setUpdate} />}
     </>
   )
 }
