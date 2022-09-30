@@ -1,10 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import arrow from '../../assets/images/arrow.png'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import AddUpdateModal from './AddUpdateModal'
+import axios from 'axios';
+import Spinner from '../Shared/Spinner';
 
 const Students = () => {
     const [students, setStudents] = useState(false)
+    const [studentsData, setStudentsData] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+
+      // getting student data from server
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/api/v1/users')
+      .then((res) => setStudentsData(res.data));
+  }, [studentsData]);
+
+  if(isLoading){
+    return <Spinner />
+  }
+  console.log(studentsData);
+
+
+    
   return (
     <section className='manage_student mt-5'>
       <div className='add_student flex justify-between'>
@@ -54,17 +73,6 @@ const Students = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='border-b-2'>
-              <td>Nazmul Hassan</td>
-              <td>nazmul@gmail.com</td>
-              <td>+8801790-868092</td>
-              <td>6465646455</td>
-              <td>12/16/2020</td>
-              <td className='flex'>
-                <i class='ri-pencil-line mr-4 text-xl text-yellow-500'></i>
-                <i class='ri-delete-bin-7-line text-xl text-yellow-500'></i>
-              </td>
-            </tr>
             <tr className='border-b-2'>
               <td>Nazmul Hassan</td>
               <td>nazmul@gmail.com</td>
