@@ -4,6 +4,7 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import AddUpdateModal from './AddUpdateModal'
 import axios from 'axios';
 import Spinner from '../Shared/Spinner';
+import Student from './Student';
 
 const Students = () => {
     const [students, setStudents] = useState(false)
@@ -20,7 +21,7 @@ const Students = () => {
   if(isLoading){
     return <Spinner />
   }
-  console.log(studentsData);
+  // console.log(studentsData);
 
 
     
@@ -73,17 +74,9 @@ const Students = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className='border-b-2'>
-              <td>Nazmul Hassan</td>
-              <td>nazmul@gmail.com</td>
-              <td>+8801790-868092</td>
-              <td>6465646455</td>
-              <td>12/16/2020</td>
-              <td className='flex'>
-                <i class='ri-pencil-line mr-4 text-xl text-yellow-500'></i>
-                <i class='ri-delete-bin-7-line text-xl text-yellow-500'></i>
-              </td>
-            </tr>
+            {
+              studentsData.map((students) => <Student students = {students} key={students._id} />)
+            }
           </tbody>
           <tfoot>
             <tr>
