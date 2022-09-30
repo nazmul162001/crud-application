@@ -23,7 +23,6 @@ const Dashboard = () => {
       confirmButtonText: 'Yes',
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Successfully Logout')
         signOut(auth)
       }
     })

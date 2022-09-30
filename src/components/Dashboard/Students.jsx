@@ -35,9 +35,6 @@ const Students = () => {
       confirmButtonText: 'Yes'
     }).then( async(result) => {
       if (result.isConfirmed) {
-        Swal.fire(
-          'Successfully deleted',
-        )
         await axios.delete(
           `http://localhost:5000/api/v1/users/${id}`
         );
