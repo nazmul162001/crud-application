@@ -1,8 +1,8 @@
+import axios from 'axios'
 import React from 'react'
 
 const AddUpdateModal = () => {
-
-const handleAddUpdate = (e) => {
+  const handleAddUpdate = async (e) => {
     e.preventDefault()
     const name = e.target.name.value
     const email = e.target.email.value
@@ -10,15 +10,28 @@ const handleAddUpdate = (e) => {
     const enroll = e.target.enroll.value
     const admission = e.target.admission.value
 
-    console.log(name, email, phone, enroll, admission);
-}
-    
+    // console.log(name, email, phone, enroll, admission)
+
+    await axios.post('http://localhost:5000/api/v1/users', {
+      name,
+      email,
+      phone,
+      enroll,
+      admission,
+    })
+  }
+
   return (
     <div>
       <input type='checkbox' id='addUpdateModal' className='modal-toggle' />
       <div className='modal modal-bottom sm:modal-middle'>
         <div className='modal-box'>
-        <label htmlFor="addUpdateModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label
+            htmlFor='addUpdateModal'
+            className='btn btn-sm btn-circle absolute right-2 top-2'
+          >
+            ✕
+          </label>
           <h1 className='text-xl font-bold mb-5'>Add/Edit Students</h1>
           <form onSubmit={handleAddUpdate} class='w-full'>
             {/* name field  */}
@@ -28,7 +41,7 @@ const handleAddUpdate = (e) => {
                   class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
                   for='inline-full-name'
                 >
-                 Name: 
+                  Name:
                 </label>
               </div>
               <div class='md:w-2/3'>
@@ -48,7 +61,7 @@ const handleAddUpdate = (e) => {
                   class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
                   for='inline-full-name'
                 >
-                 Email: 
+                  Email:
                 </label>
               </div>
               <div class='md:w-2/3'>
@@ -68,7 +81,7 @@ const handleAddUpdate = (e) => {
                   class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
                   for='inline-full-name'
                 >
-                 Phone: 
+                  Phone:
                 </label>
               </div>
               <div class='md:w-2/3'>
@@ -88,7 +101,7 @@ const handleAddUpdate = (e) => {
                   class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
                   for='inline-full-name'
                 >
-                 Enroll Number: 
+                  Enroll Number:
                 </label>
               </div>
               <div class='md:w-2/3'>
@@ -108,7 +121,7 @@ const handleAddUpdate = (e) => {
                   class='block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4'
                   for='inline-full-name'
                 >
-                 Date of Admission: 
+                  Date of Admission:
                 </label>
               </div>
               <div class='md:w-2/3'>
@@ -126,9 +139,9 @@ const handleAddUpdate = (e) => {
               <div class='md:w-1/3'></div>
               <div class='md:w-2/3'>
                 <div className='modal-action'>
-                <button className='px-12 py-2 bg-yellow-500 rounded-lg text-base-100'>
+                  <button className='px-12 py-2 bg-yellow-500 rounded-lg text-base-100'>
                     Submit
-                </button>
+                  </button>
                   {/* <input type="submit" value="submit" /> */}
                 </div>
               </div>
