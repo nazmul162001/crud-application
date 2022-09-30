@@ -5,6 +5,7 @@ import AddUpdateModal from './AddUpdateModal'
 import axios from 'axios';
 import Spinner from '../Shared/Spinner';
 import Student from './Student';
+import Swal from 'sweetalert2';
 
 const Students = () => {
     const [students, setStudents] = useState(false)
@@ -23,6 +24,26 @@ const Students = () => {
   }
   // console.log(studentsData);
 
+  // handle delete students data
+  const handleDeleteStudentData =  async(id)=> {
+    Swal.fire({
+      title: 'Are you sure want to delete?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then( async(result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Successfully deleted',
+        )
+        await axios.delete(
+          `http://localhost:5000/api/v1/users/${id}`
+        );
+      }
+    })
+  }
 
     
   return (
@@ -75,7 +96,7 @@ const Students = () => {
           </thead>
           <tbody>
             {
-              studentsData.map((students) => <Student students = {students} key={students._id} />)
+              studentsData.map((students) => <Student students = {students} key={students._id} handleDeleteStudentData={handleDeleteStudentData} />)
             }
           </tbody>
           <tfoot>
