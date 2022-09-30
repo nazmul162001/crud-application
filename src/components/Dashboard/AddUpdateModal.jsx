@@ -19,7 +19,7 @@ const handleAddUpdate = (e) => {
       <div className='modal modal-bottom sm:modal-middle'>
         <div className='modal-box'>
         <label htmlFor="addUpdateModal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-          <h1 className='text-xl font-bold'>Add/Edit Students</h1>
+          <h1 className='text-xl font-bold mb-5'>Add/Edit Students</h1>
           <form onSubmit={handleAddUpdate} class='w-full'>
             {/* name field  */}
             <div class='md:flex md:items-center mb-6'>
@@ -37,6 +37,7 @@ const handleAddUpdate = (e) => {
                   id='userName'
                   type='text'
                   name='name'
+                  required
                 />
               </div>
             </div>
@@ -56,6 +57,7 @@ const handleAddUpdate = (e) => {
                   id='userEmail'
                   type='email'
                   name='email'
+                  required
                 />
               </div>
             </div>
@@ -75,6 +77,7 @@ const handleAddUpdate = (e) => {
                   id='number'
                   type='number'
                   name='phone'
+                  required
                 />
               </div>
             </div>
@@ -94,6 +97,7 @@ const handleAddUpdate = (e) => {
                   id='number'
                   type='number'
                   name='enroll'
+                  required
                 />
               </div>
             </div>
@@ -111,8 +115,9 @@ const handleAddUpdate = (e) => {
                 <input
                   class=' outline-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:border-gray-300'
                   id='admission'
-                  type='number'
+                  type='date'
                   name='admission'
+                  required
                 />
               </div>
             </div>

@@ -3,11 +3,11 @@
     display: inline-flex;
     color: #000000;
     text-decoration: none;
-    transition: all 0.5s;
+    transition: all 1s;
     border-radius: 5px;
   }
   .linkk:hover{
-    background:rgba(255, 255, 255, 0.374);
+    background:rgba(91, 81, 81, 0.201);
     color: black;
     transition: all 0.5s;
   }

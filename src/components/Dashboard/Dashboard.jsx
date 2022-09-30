@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { signOut } from 'firebase/auth'
 import 'remixicon/fonts/remixicon.css'
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import './Dashboard.css'
 import logo from '../../assets/images/profile1.png'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -9,6 +9,7 @@ import auth from '../../firebase.init'
 import Swal from 'sweetalert2'
 
 const Dashboard = () => {
+  const location = useLocation()
   const [user, loading, error] = useAuthState(auth)
 
   // handle logout user
@@ -32,32 +33,32 @@ const Dashboard = () => {
   const Menus = [
     {
       title: 'Home',
-      src: 'ri-dashboard-line',
-      path: '/',
+      src: 'ri-home-8-line',
+      path: '/home',
     },
     {
       title: 'Course',
-      src: 'ri-user-line',
+      src: 'ri-award-fill',
       path: '/Course',
     },
     {
       title: 'Students',
-      src: 'ri-user-line',
+      src: 'ri-team-line',
       path: '/students',
     },
     {
       title: 'Payment',
-      src: 'ri-user-line',
+      src: 'ri-money-dollar-box-line',
       path: '/payment',
     },
     {
       title: 'Report',
-      src: 'ri-user-line',
+      src: 'ri-file-chart-line',
       path: '/report',
     },
     {
       title: 'Settings',
-      src: 'ri-user-line',
+      src: 'ri-settings-2-line',
       path: '/settings',
     },
   ]
@@ -73,7 +74,7 @@ const Dashboard = () => {
         {/* outlet  */}
         <div className='flex justify-between items-center my-2 mx-5'>
           <div className='left_arrow'>
-          <i class="ri-arrow-left-s-fill text-2xl text-gray-400 rotate-180 rounded-full border cursor-pointer"></i>
+            <i class='ri-arrow-left-s-fill text-2xl text-gray-400 rotate-180 rounded-full border cursor-pointer'></i>
           </div>
           <div className='search flex justify-center items-center'>
             <div class='font-sans text-black bg-white flex items-center justify-center'>
@@ -91,7 +92,7 @@ const Dashboard = () => {
                 </button>
               </div>
             </div>
-            <i class="ri-notification-3-line ml-2 text-2xl cursor-pointer text-gray-400"></i>
+            <i class='ri-notification-3-line ml-2 text-2xl cursor-pointer text-gray-400'></i>
           </div>
         </div>
         <Outlet />
@@ -157,10 +158,10 @@ const Dashboard = () => {
                   to={`${Menu.path}`}
                 >
                   {open ? (
-                    <i className={`mr-2 text-xl ${Menu.src}`}></i>
+                    <i className={`mr-2 text-2xl ${Menu.src}`}></i>
                   ) : (
                     <i
-                      className={`p-2 text-xl my-2 ${Menu.src}`}
+                      className={`p-2 text-2xl ${Menu.src}`}
                       data-tip={Menu.tooltip}
                     ></i>
                   )}
@@ -177,12 +178,21 @@ const Dashboard = () => {
               </li>
             ))}
           </ul>
-          <button
-            onClick={handleLogOut}
-            className='absolute bottom-2 py-2 px-5 w-full'
-          >
-            Logout
-          </button>
+          {open ? (
+            <button
+              onClick={handleLogOut}
+              className='absolute bottom-2 py-2 w-1/2 left-0 right-0 mx-auto border border-gray-400'
+            >
+              Logout <i class='ri-share-forward-2-line'></i>
+            </button>
+          ) : (
+            <button
+              onClick={handleLogOut}
+              className='absolute bottom-2 py-2 w-1/2 left-0 right-0 mx-auto border border-gray-400'
+            >
+              <i class='ri-share-forward-2-line'></i>
+            </button>
+          )}
         </div>
       </div>
     </div>
