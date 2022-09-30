@@ -9,8 +9,8 @@ import Swal from 'sweetalert2';
 
 const Students = () => {
     const [students, setStudents] = useState(false)
-    const [studentsData, setStudentsData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [studentsData, setStudentsData] = useState([])
 
       // getting student data from server
   useEffect(() => {
