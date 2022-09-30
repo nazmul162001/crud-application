@@ -90,7 +90,7 @@ const Students = () => {
           </tfoot>
         </table>
       </div>
-      {students && <AddUpdateModal />}
+      {students && <AddUpdateModal setStudents={setStudents} />}
     </section>
   )
 }

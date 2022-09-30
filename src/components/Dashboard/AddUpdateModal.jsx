@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
-const AddUpdateModal = () => {
+const AddUpdateModal = ({setStudents}) => {
   const handleAddUpdate = async (e) => {
     e.preventDefault()
     const name = e.target.name.value
@@ -19,6 +19,8 @@ const AddUpdateModal = () => {
       enroll,
       admission,
     })
+    // close modal after successfully added student
+    setStudents(false)
   }
 
   return (
