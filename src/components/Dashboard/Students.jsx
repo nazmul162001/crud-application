@@ -2,59 +2,57 @@ import React, { useEffect, useState } from 'react'
 import arrow from '../../assets/images/arrow.png'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import AddUpdateModal from './AddUpdateModal'
-import axios from 'axios';
-import Spinner from '../Shared/Spinner';
-import Student from './Student';
-import Swal from 'sweetalert2';
-import UpdateModal from './UpdateModal';
+import axios from 'axios'
+import Spinner from '../Shared/Spinner'
+import Student from './Student'
+import Swal from 'sweetalert2'
+import UpdateModal from './UpdateModal'
 
 const Students = () => {
-    const [students, setStudents] = useState(false)
-    const [isLoading, setIsLoading] = useState(false)
-    const [studentsData, setStudentsData] = useState([])
-    const [update, setUpdate] = useState(false)
-    const [updatedValue, setUpdatedValue] = useState({})
+  const [students, setStudents] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [studentsData, setStudentsData] = useState([])
+  const [update, setUpdate] = useState(false)
+  const [updatedValue, setUpdatedValue] = useState({})
 
-
-
-      // getting student data from server
+  // getting student data from server
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/v1/users')
-      .then((res) => setStudentsData(res.data));
-  }, [studentsData]);
+      .get('https://boiling-springs-92812.herokuapp.com/api/v1/users')
+      .then((res) => setStudentsData(res.data))
+  }, [studentsData])
 
-  if(isLoading){
+  if (isLoading) {
     return <Spinner />
   }
   // console.log(studentsData);
 
   // handle delete students data
-  const handleDeleteStudentData =  async(id)=> {
+  const handleDeleteStudentData = async (id) => {
     Swal.fire({
       title: 'Are you sure want to delete?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then( async(result) => {
+      confirmButtonText: 'Yes',
+    }).then(async (result) => {
       if (result.isConfirmed) {
         await axios.delete(
-          `http://localhost:5000/api/v1/users/${id}`
-        );
+          `https://boiling-springs-92812.herokuapp.com/api/v1/users/${id}`
+        )
       }
     })
   }
 
   // handleUpdate
-  const handleUpdate = async(id) => {
+  const handleUpdate = async (id) => {
     setUpdate(true)
-    await axios.get(
-      `http://localhost:5000/api/v1/users/${id}`
-    ).then(res => setUpdatedValue(res.data[0]))
+    await axios
+      .get(`https://boiling-springs-92812.herokuapp.com/api/v1/users/${id}`)
+      .then((res) => setUpdatedValue(res.data[0]))
   }
-    
+
   return (
     <section className='manage_student mt-5'>
       <div className='add_student flex justify-between'>
@@ -63,7 +61,13 @@ const Students = () => {
           <span className='mr-5'>
             <img src={arrow} alt='/arrow' />
           </span>
-          <label onClick={()=> setStudents(true)} htmlFor="addUpdateModal" className="px-5 py-2 cursor-pointer bg-yellow-500 rounded-lg text-base-100">ADD NEW STUDENT</label>
+          <label
+            onClick={() => setStudents(true)}
+            htmlFor='addUpdateModal'
+            className='px-5 py-2 cursor-pointer bg-yellow-500 rounded-lg text-base-100'
+          >
+            ADD NEW STUDENT
+          </label>
         </div>
       </div>
       {/* students table  */}
@@ -104,14 +108,28 @@ const Students = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              studentsData.map((students) => <Student students = {students} key={students._id} handleDeleteStudentData={handleDeleteStudentData} handleUpdate={handleUpdate} update={update} setUpdate={setUpdate} />)
-            }
+            {studentsData.map((students) => (
+              <Student
+                students={students}
+                key={students._id}
+                handleDeleteStudentData={handleDeleteStudentData}
+                handleUpdate={handleUpdate}
+                update={update}
+                setUpdate={setUpdate}
+              />
+            ))}
           </tbody>
         </table>
       </div>
       {students && <AddUpdateModal setStudents={setStudents} />}
-      {update && <UpdateModal students={students} updatedValue={updatedValue} setUpdate={setUpdate} studentsData={studentsData} />}
+      {update && (
+        <UpdateModal
+          students={students}
+          updatedValue={updatedValue}
+          setUpdate={setUpdate}
+          studentsData={studentsData}
+        />
+      )}
     </section>
   )
 }

@@ -6,14 +6,14 @@ import user from '../../assets/images/user.png'
 import axios from 'axios'
 
 const Home = () => {
-    const [studentsData, setStudentsData] = useState([])
-          // getting student data from server
+  const [studentsData, setStudentsData] = useState([])
+  // getting student data from server
   useEffect(() => {
     axios
-      .get('http://localhost:5000/api/v1/users')
-      .then((res) => setStudentsData(res.data));
-  }, [studentsData]);
-    
+      .get('https://boiling-springs-92812.herokuapp.com/api/v1/users')
+      .then((res) => setStudentsData(res.data))
+  }, [studentsData])
+
   return (
     <section className='welcome_dashboard mx-3 mt-5'>
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3'>

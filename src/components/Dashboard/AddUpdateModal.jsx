@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
-const AddUpdateModal = ({setStudents}) => {
+const AddUpdateModal = ({ setStudents }) => {
   const handleAddUpdate = async (e) => {
     e.preventDefault()
     const name = e.target.name.value
@@ -12,13 +12,16 @@ const AddUpdateModal = ({setStudents}) => {
 
     // console.log(name, email, phone, enroll, admission)
 
-    await axios.post('http://localhost:5000/api/v1/users', {
-      name,
-      email,
-      phone,
-      enroll,
-      admission,
-    })
+    await axios.post(
+      'https://boiling-springs-92812.herokuapp.com/api/v1/users',
+      {
+        name,
+        email,
+        phone,
+        enroll,
+        admission,
+      }
+    )
     // close modal after successfully added student
     setStudents(false)
   }
