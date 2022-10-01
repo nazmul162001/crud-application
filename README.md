@@ -31,10 +31,10 @@
 
 
 ## Project Run Command Client-Side
-yarn
-yarn start
+yarn <br>
+yarn start <br>
 ## Project Run Command Server-Side
-npm install
+npm install <br>
 npm run start-dev
 
 
