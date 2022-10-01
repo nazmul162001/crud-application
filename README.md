@@ -20,9 +20,12 @@
 * ReactJs
 * TailwindCSS
 * DaisyUi
-#### Backend
+### Backend
 * NodeJs
 * ExpressJs
+### Database
+* MongoDB
+* Mongoose
 ### Authentication
 * Firebase-auth 
 ## Deployment
