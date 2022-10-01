@@ -3,6 +3,11 @@ import React from 'react'
 
 const UpdateModal = ({ setUpdate, students, updatedValue, studentsData, handleUpdateStudent }) => {
 
+  const {_id} = updatedValue
+
+  
+
+
     const handleAddUpdate = async (e) => {
         e.preventDefault()
         const name = e.target.name.value
@@ -11,7 +16,18 @@ const UpdateModal = ({ setUpdate, students, updatedValue, studentsData, handleUp
         const enroll = e.target.enroll.value
         const admission = e.target.admission.value
     
-        console.log(name, email, phone, enroll, admission)
+        // console.log(name, email, phone, enroll, admission)
+
+        axios.put(`http://localhost:5000/api/v1/users/${_id}`, {
+          name: name,
+          email: email,
+          phone: phone,
+          enroll: enroll,
+          admission: admission
+        })
+
+
+        
         // close modal after successfully added student
         setUpdate(false)
       }

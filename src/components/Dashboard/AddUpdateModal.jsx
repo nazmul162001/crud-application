@@ -34,7 +34,7 @@ const AddUpdateModal = ({setStudents}) => {
           >
             ✕
           </label>
-          <h1 className='text-xl font-bold mb-5'>Add/Edit Students</h1>
+          <h1 className='text-xl font-bold mb-5'>Add Students</h1>
           <form onSubmit={handleAddUpdate} class='w-full'>
             {/* name field  */}
             <div class='md:flex md:items-center mb-6'>
