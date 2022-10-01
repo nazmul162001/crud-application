@@ -54,7 +54,7 @@ const Home = () => {
         >
           <div className='students'>
             <img src={user} alt='/hat_image' />
-            <p className='opacity-70 my-1 text-base-100'>Users</p>
+            <p className='opacity-70 my-1 text-white'>Users</p>
           </div>
           <div className='count flex justify-end'>
             <span className='text-2xl font-bold'>3</span>

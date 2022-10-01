@@ -14,9 +14,8 @@ const SignUp = () => {
 
   const navigate = useNavigate()
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
-
 
   const handleSignUp = (e) => {
     e.preventDefault()
@@ -88,7 +87,7 @@ const SignUp = () => {
                 required
               />
               <span
-                onClick={()=> setPasswordShown(!passwordShown)}
+                onClick={() => setPasswordShown(!passwordShown)}
                 className='absolute right-5 top-2 text-2xl'
               >
                 {passwordShown ? (
@@ -112,7 +111,7 @@ const SignUp = () => {
                 required
               />
               <span
-                onClick={()=> setPasswordShown(!passwordShown)}
+                onClick={() => setPasswordShown(!passwordShown)}
                 className='absolute right-5 top-2 text-2xl'
               >
                 {passwordShown ? (
@@ -127,7 +126,7 @@ const SignUp = () => {
             <small>{err}</small>
           </p>
           <div className='form-control mt-6'>
-            <button className='bg-yellow-500 py-2 rounded text-base-100'>
+            <button className='bg-yellow-500 py-2 rounded text-white'>
               SIGN UP
             </button>
           </div>

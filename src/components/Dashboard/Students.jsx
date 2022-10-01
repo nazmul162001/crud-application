@@ -64,7 +64,7 @@ const Students = () => {
           <label
             onClick={() => setStudents(true)}
             htmlFor='addUpdateModal'
-            className='px-5 py-2 cursor-pointer bg-yellow-500 rounded-lg text-base-100'
+            className='px-5 py-2 cursor-pointer bg-yellow-500 rounded-lg text-white'
           >
             ADD NEW STUDENT
           </label>

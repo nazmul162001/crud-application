@@ -18,7 +18,7 @@ const Login = () => {
     navigate(from, { replace: true })
   }
   if (loading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   // Password toggle handler
@@ -54,7 +54,7 @@ const Login = () => {
       }}
       className='login h-screen flex justify-center items-center'
     >
-      <div className='login_form w-96 mx-auto px-8 py-8 bg-base-100 rounded-lg'>
+      <div className='login_form w-96 mx-auto px-8 py-8 bg-white rounded-lg'>
         <h2 className='relative text-center text-2xl font-bold'>
           {' '}
           <span className='bg-yellow-400 w-1 h-6 top-1/2 bottom-1/2 my-auto inline-block absolute left-8'></span>{' '}
@@ -113,7 +113,7 @@ const Login = () => {
             <small>{errorMessage}</small>
           </p>
           <div className='form-control mt-6'>
-            <button className='bg-yellow-500 py-2 rounded text-base-100'>
+            <button className='bg-yellow-500 py-2 rounded text-white'>
               SIGN IN
             </button>
           </div>
