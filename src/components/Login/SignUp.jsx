@@ -53,7 +53,7 @@ const SignUp = () => {
       }}
       className='login h-screen flex justify-center items-center'
     >
-      <div className='login_form w-96 mx-auto px-8 py-8 bg-base-100 rounded-lg'>
+      <div className='login_form w-96 mx-auto px-8 py-8 bg-white rounded-lg'>
         <h2 className='relative text-center text-2xl font-bold'>
           {' '}
           <span className='bg-yellow-400 w-1 h-6 top-1/2 bottom-1/2 my-auto inline-block absolute left-8'></span>{' '}

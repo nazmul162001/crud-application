@@ -105,7 +105,7 @@ const Dashboard = () => {
           } h-screen pt-3 relative duration-300`}
         >
           <i
-            className={`bg-base-100 text-black flex justify-center items-center ri-arrow-left-s-line absolute cursor-pointer -right-4 top-8 w-8 h-8
+            className={`bg-white text-black flex justify-center items-center ri-arrow-left-s-line absolute cursor-pointer -right-4 top-8 w-8 h-8
            border-2 rounded-full text-2xl ${!open && 'rotate-180'}`}
             onClick={() => setOpen(!open)}
           ></i>
